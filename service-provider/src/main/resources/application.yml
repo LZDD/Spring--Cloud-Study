@@ -1,0 +1,38 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: service-provider-user
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+info:
+  app: @project.artifactId@
+  encoding: @project.build.sourceEncoding@
+  java:
+    source: @java.version@
+    target: @java.version@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:password123@localhost:8761/eureka/
+    #register-with-eureka: true  #将自己注册到erueka server，如果不配置euraka页面会出现红色提示
+    #fetch-registry: false #作为eureka server同步其他eureka server的信息
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      test: name
+    #在Eureka监控页面中，点击链接到swagger的页面
+    status-page-url: http://localhost:${server.port}/swagger-ui.html

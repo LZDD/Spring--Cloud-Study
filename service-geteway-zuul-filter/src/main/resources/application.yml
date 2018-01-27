@@ -1,0 +1,13 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: service-gateway-auul-filter
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+    service-file-upload: /file/**
+

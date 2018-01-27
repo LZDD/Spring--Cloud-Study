@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: service-config-server
+  cloud:
+    config:
+      server:
+        git:
+          #git远程仓库
+          uri: ${CONFIG_URL:https://github.com/LZDD/spring-cloud-config-repo.git}
+          searchPaths: '{profile}'
+          username: LZDD
+          password: tf20122171
+        bootstrap: true

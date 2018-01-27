@@ -1,0 +1,13 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: service-consumer-movie-feign
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:password123@localhost:8761/eureka/
+    #register-with-eureka: true
+    #fetch-registry: false
+  instance:
+    prefer-ip-address: true
