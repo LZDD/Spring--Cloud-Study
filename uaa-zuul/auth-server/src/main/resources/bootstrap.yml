@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  application:
+      name: auth-server
+
+  jpa:
+    open-in-view: true
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://192.168.99.100:5432/oauth2
+    username: wang
+    password: yunfei
+    driver-class-name: org.postgresql.Driver
+  redis:
+    #host: 192.168.1.140
+    host: localhost
+
+server:
+  port: 9999
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+
+
+
+logging.level.org.springframework.security: DEBUG
+
+logging.leve.org.springframework: DEBUG
+
+#很重要,ResourceServer的Filter们的顺序
+security:
+  oauth2:
+    resource:
+      filter-order: 3
